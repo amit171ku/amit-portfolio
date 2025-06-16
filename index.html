@@ -293,14 +293,6 @@ padding: 0;
         }
       });
     }
-
-    // Contact Form (fake submit)
-    document.getElementById('contactForm').onsubmit = function(e) {
-      e.preventDefault();
-      alert('Thank you! Your message has been sent.');
-      this.reset();
-    };
-
     // Accessibility: Font Size & Contrast
     let fontSize = 16;
     function changeFont(delta) {
