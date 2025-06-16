@@ -4,26 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Amit Sharma | Portfolio</title>
-  <!-- Font Awesome for social and UI icons -->
+  <!-- Font Awesome for Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
-  <!-- Vanta.js (for animated 3D background) and Three.js (dependency) -->
+  <!-- Vanta.js & Three.js for 3D BG -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
   <style>
-    /* =======================
-       CSS VARIABLES
-       ======================= */
     :root {
-      --main-bg: #181c2f;      /* Main dark background color */
-      --accent: #ffd700;       /* Accent color (yellow) */
-      --light-bg: #fff;        /* Light background for light mode */
-      --dark-text: #181c2f;    /* Text color for light mode */
-      --light-text: #fff;      /* Text color for dark mode */
-      --card-bg: rgba(255,255,255,0.10); /* Card background */
+      --main-bg: #181c2f;
+      --accent: #ffd700;
+      --light-bg: #fff;
+      --dark-text: #181c2f;
+      --light-text: #fff;
+      --card-bg: rgba(255,255,255,0.10);
     }
-    /* =======================
-       BODY & LIGHT MODE
-       ======================= */
     body {
       min-height: 100vh;
       background: var(--main-bg);
@@ -39,37 +33,21 @@
       background: var(--main-bg);
       color: var(--light-text);
     }
-    /* =======================
-       VANTA BACKGROUND
-       ======================= */
     #vantajs-bg { position: fixed; z-index: -1; width: 100vw; height: 100vh; top: 0; left: 0; }
-    /* =======================
-       LAYOUT & HEADER
-       ======================= */
     .container { max-width: 900px; margin: 0 auto; padding: 2rem 1rem; }
     header { text-align: center; padding: 2rem 1rem 1rem; background: transparent; position: relative;}
     .profile-img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid var(--accent); margin-bottom: 1rem; }
     .hero-socials { margin: 1rem 0; }
     .hero-socials a { color: var(--accent); margin: 0 0.5rem; font-size: 1.5rem; transition: color 0.2s; }
     .hero-socials a:hover { color: #fff; }
-    /* Dark/Light Mode Toggle Button */
     .dark-toggle { position: absolute; top: 30px; right: 30px; background: var(--accent); border: none; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; display: flex; align-items: center; justify-content: center;}
-    /* =======================
-       HEADINGS & SECTIONS
-       ======================= */
     h1 { font-size: 2.4rem; margin-bottom: 0.5rem; letter-spacing: 2px; text-shadow: 0 2px 16px rgba(0,0,0,0.25);}
     h2 { color: var(--accent); margin-top: 2.5rem; margin-bottom: 1rem; font-size: 2rem;}
     section { background: rgba(0,0,0,0.45); border-radius: 18px; box-shadow: 0 8px 32px rgba(0,0,0,0.18); margin-bottom: 2rem; padding: 2rem; backdrop-filter: blur(2px);}
     body.light-mode section { background: rgba(255,255,255,0.85); }
-    /* =======================
-       SKILLS SECTION
-       ======================= */
     .skills-list { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;}
     .skill-bar { background: #222; border-radius: 20px; overflow: hidden; margin-bottom: 1rem;}
     .skill-bar span { display: block; height: 18px; background: linear-gradient(90deg, #ffd700, #ffb300); width: 0; transition: width 1.2s;}
-    /* =======================
-       PROJECTS SECTION
-       ======================= */
     .projects-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 2rem;}
     .project-card { background: var(--card-bg); border-radius: 14px; box-shadow: 0 4px 15px rgba(0,0,0,0.18); overflow: hidden; transition: transform 0.3s, box-shadow 0.3s;}
     .project-card:hover { transform: translateY(-10px) scale(1.03); box-shadow: 0 10px 30px rgba(0,0,0,0.25);}
@@ -78,121 +56,119 @@
     .project-content h3 { margin-bottom: 0.5rem; color: var(--accent);}
     .project-content p { font-size: 0.95rem; color: #eee; margin-bottom: 1rem;}
     .project-content a { font-weight: 600; font-size: 0.9rem; color: var(--accent); text-decoration: underline;}
-    /* Resume Download Button */
     .resume-btn { display: inline-block; margin-top: 1rem; background: linear-gradient(90deg, #ffd700, #ffb300); color: #222; padding: 0.7rem 2rem; border-radius: 30px; font-weight: 700; text-decoration: none; box-shadow: 0 4px 16px rgba(255,215,0,0.18);}
     .resume-btn:hover { background: linear-gradient(90deg, #ffb300, #ffd700); color: #fff;}
-    /* =======================
-       TESTIMONIALS SECTION
-       ======================= */
     .testimonials { margin-top: 2rem; }
     .testimonial-card { background: rgba(0,0,0,0.3); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; color: #fff; }
     .testimonial-card strong { color: var(--accent);}
-    /* =======================
-       CONTACT FORM
-       ======================= */
     .contact-form input, .contact-form textarea { width: 100%; padding: 0.75rem; margin-bottom: 1rem; border-radius: 8px; border: 1.5px solid #ffd70033;}
     .contact-form button { background: var(--accent); color: #222; padding: 0.7rem 2rem; border-radius: 30px; font-weight: 700; border: none; cursor: pointer;}
     .contact-form button:hover { background: #ffb300; color: #fff;}
-    /* =======================
-       PROJECT FILTER BUTTONS
-       ======================= */
     .filters { margin-bottom: 1.2rem; }
     .filters button { margin-right: 0.5rem; background: #222; color: #ffd700; border: none; border-radius: 18px; padding: 0.3rem 1.1rem; cursor: pointer;}
     .filters button.active, .filters button:hover { background: #ffd700; color: #222;}
-    /* =======================
-       ACCESSIBILITY BAR (Font/Contrast)
-       ======================= */
     .accessibility-bar { position: fixed; bottom: 20px; right: 20px; z-index: 999; display: flex; gap: 0.5rem;}
-    .accessibility-bar button { background: var(--accent); color: #222; border: none; border-radius: 50%; width: 35px; height: 35px; font-size: 0.95rem; cursor: pointer;display: flex; align-items: center;justify-content: center; padding: 0; margin: 0; line-height: 1;}
-    /* =======================
-       FOOTER
-       ======================= */
+    .accessibility-bar button { background: var(--accent); color: #222; border: none; border-radius: 50%; width: 35px; height: 35px; font-size: 0.95rem; cursor: pointer;display: flex; align-items: center;justify-content: center;
+padding: 0;
+  margin: 0;
+  line-height: 1;}
     footer { text-align: center; padding: 1.5rem 1rem; background: transparent; color: var(--accent); font-size: 0.95rem; margin-top: 3rem;}
     .footer-socials a { color: var(--accent); margin: 0 0.5rem; font-size: 1.3rem; transition: color 0.2s; }
     .footer-socials a:hover { color: #fff; }
-    /* =======================
-       RESPONSIVE DESIGN
-       ======================= */
     @media (max-width: 600px) { h1 { font-size: 2rem;} section { padding: 1rem;} }
   </style>
 </head>
 <body>
-  <!-- =======================
-       VANTA.JS 3D BACKGROUND
-       ======================= -->
+  <!-- 3D Animated Background -->
   <div id="vantajs-bg"></div>
-  <!-- =======================
-       DARK/LIGHT MODE BUTTON
-       ======================= -->
   <button class="dark-toggle" title="Toggle Dark/Light Mode"><i class="fa-solid fa-moon"></i></button>
-  <!-- =======================
-       ACCESSIBILITY BAR (Font Size & Contrast)
-       ======================= -->
   <div class="accessibility-bar">
     <button title="Increase Font" onclick="changeFont(1)">A+</button>
     <button title="Decrease Font" onclick="changeFont(-1)">A-</button>
-    <button title="High Contrast" onclick="toggleContrast()">☀️</button>
+    <button title="High Contrast" onclick="toggleContrast()">â˜€ï¸</button>
   </div>
-  <!-- =======================
-       HEADER SECTION
-       ======================= -->
   <header>
     <img src="https://i.ibb.co/sJHd0mX8/IMG-20250430-184141.jpg" alt="Amit Sharma" class="profile-img" />
     <h1>Amit Sharma</h1>
     <p>Aspiring Web Developer | Computer Science (AI & ML)</p>
     <p style="font-size:1.1rem; color:#ffd700;">Revli, Rajapur, Pratapgarh, U.P. | +91 8795546788</p>
-    <!-- Social Media Links -->
     <div class="hero-socials">
       <a href="mailto:sharmaamit55174@gmail.com" target="_blank"><i class="fa-solid fa-envelope"></i></a>
       <a href="https://github.com/amit171ku" target="_blank"><i class="fa-brands fa-github"></i></a>
       <a href="https://www.linkedin.com/in/amit-sharma-dob1812" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
       <a href="https://wa.me/918795546788" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
     </div>
-    <!-- Resume Download Button -->
-    <a class="resume-btn" href="https://github.com/amit171ku/amit-portfolio/raw/refs/heads/main/Amit%20Sharma%20RESUME%201.pdf" target="_blank">Download Resume (PDF)</a>
+    <a class="resume-btn" href ="https://github.com/amit171ku/amit-portfolio/raw/refs/heads/main/Amit%20Sharma%20RESUME%201.pdf"
+ target="_blank">Download Resume (PDF)</a>
   </header>
   <main class="container">
-    <!-- =======================
-         ABOUT SECTION
-         ======================= -->
     <section>
       <h2>About Me</h2>
       <p>
         Hi, I'm Amit Sharma. I am currently pursuing B.Tech in Computer Science (AI & ML) from AKTU. I have a strong foundation in web development and electronics, and am passionate about building real-world projects using modern web technologies. My goal is to apply my skills and creativity in a dynamic environment and contribute to impactful solutions.
       </p>
     </section>
-    <!-- =======================
-         SKILLS SECTION
-         ======================= -->
     <section>
       <h2>Technical Skills</h2>
       <div class="skills-list">
-        <!-- Each skill-bar shows animated skill percent -->
         <div style="width:200px">
           <div>HTML</div>
           <div class="skill-bar"><span data-width="95%"></span></div>
         </div>
-        <!-- ... other skills ... -->
+        <div style="width:200px">
+          <div>CSS</div>
+          <div class="skill-bar"><span data-width="90%"></span></div>
+        </div>
+        <div style="width:200px">
+          <div>JavaScript</div>
+          <div class="skill-bar"><span data-width="85%"></span></div>
+        </div>
+        <div style="width:200px">
+          <div>React.js</div>
+          <div class="skill-bar"><span data-width="75%"></span></div>
+        </div>
+        <div style="width:200px">
+          <div>Node.js</div>
+          <div class="skill-bar"><span data-width="70%"></span></div>
+        </div>
+        <div style="width:200px">
+          <div>C</div>
+          <div class="skill-bar"><span data-width="90%"></span></div>
+        </div>
+        <div style="width:200px">
+          <div>Python</div>
+          <div class="skill-bar"><span data-width="80%"></span></div>
+        </div>
+        <div style="width:200px">
+          <div>Java</div>
+          <div class="skill-bar"><span data-width="70%"></span></div>
+        </div>
+        <div style="width:200px">
+          <div>MySQL</div>
+          <div class="skill-bar"><span data-width="80%"></span></div>
+        </div>
+        <div style="width:200px">
+          <div>MongoDB</div>
+          <div class="skill-bar"><span data-width="65%"></span></div>
+        </div>
+        <div style="width:200px">
+          <div>Git & GitHub</div>
+          <div class="skill-bar"><span data-width="85%"></span></div>
+        </div>
         <div style="width:200px">
           <div>MS Office</div>
           <div class="skill-bar"><span data-width="90%"></span></div>
         </div>
       </div>
     </section>
-    <!-- =======================
-         PROJECTS SECTION
-         ======================= -->
     <section>
       <h2>Projects</h2>
-      <!-- Filter buttons for project type -->
       <div class="filters">
         <button class="active" onclick="filterProjects('all')">All</button>
         <button onclick="filterProjects('web')">Web</button>
         <button onclick="filterProjects('electronics')">Electronics</button>
       </div>
-      <!-- Project cards grid -->
       <div class="projects-grid" id="projects-list">
-        <!-- Example project card -->
         <div class="project-card" data-type="web">
           <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80" alt="Portfolio Website" class="project-image" />
           <div class="project-content">
@@ -201,24 +177,33 @@
             <a href="#">View Project</a>
           </div>
         </div>
-        <!-- ... more project cards ... -->
+        <div class="project-card" data-type="electronics">
+          <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="Fire Alarm System" class="project-image" />
+          <div class="project-content">
+            <h3>Fire Alarm System</h3>
+            <p>Developed a temperature control system using thermistors for fire safety applications.</p>
+            <a href="#">View Project</a>
+          </div>
+        </div>
+        <div class="project-card" data-type="electronics">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Night Lamp using LDR" class="project-image" />
+          <div class="project-content">
+            <h3>Night Lamp using LDR</h3>
+            <p>Created a circuit-based night lamp that automatically turns on in the dark using a light-dependent resistor.</p>
+            <a href="#">View Project</a>
+          </div>
+        </div>
       </div>
     </section>
-    <!-- =======================
-         EDUCATION SECTION
-         ======================= -->
     <section>
       <h2>Education</h2>
       <ul style="color:#fff; font-size:1.05rem;">
-        <li><strong>B.Tech (Computer Science, AI & ML)</strong> – Ongoing, AKTU</li>
-        <li><strong>Diploma in Electronics Engineering</strong> – BTEUP, 2022 | 74.6%</li>
-        <li><strong>Intermediate</strong> – U.P. Board, 2019 | 73.8%</li>
-        <li><strong>High School</strong> – U.P. Board, 2017 | 77.06%</li>
+        <li><strong>B.Tech (Computer Science, AI & ML)</strong> â€“ Ongoing, AKTU</li>
+        <li><strong>Diploma in Electronics Engineering</strong> â€“ BTEUP, 2022 | 74.6%</li>
+        <li><strong>Intermediate</strong> â€“ U.P. Board, 2019 | 73.8%</li>
+        <li><strong>High School</strong> â€“ U.P. Board, 2017 | 77.06%</li>
       </ul>
     </section>
-    <!-- =======================
-         TESTIMONIALS SECTION
-         ======================= -->
     <section class="testimonials">
       <h2>Testimonials</h2>
       <div class="testimonial-card">
@@ -230,37 +215,29 @@
         <strong>- Client</strong>
       </div>
     </section>
-    <!-- =======================
-         CONTACT SECTION
-         ======================= -->
     <section>
       <h2>Contact</h2>
-      <!-- Contact Form (Formspree backend, auto-reset, custom success message) -->
       <form action="https://formspree.io/f/mjkrrjor" method="POST" class="contact-form" id="contactForm" autocomplete="off">
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <input type="text" name="subject" placeholder="Subject" required />
-        <select name="country" required>
-          <option value="">Select Country</option>
-          <option value="India">India</option>
-          <option value="USA">USA</option>
-          <option value="UK">UK</option>
-          <!-- More countries as needed -->
-        </select>
-        <input type="tel" name="phone" placeholder="Phone Number" pattern="[0-9]{10}" />
-        <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
-      <!-- Success message (shows after submit) -->
-      <div id="success-message" style="display:none; color: #38c172; font-weight: bold; margin-top: 1rem;">
-        Thank you! Your message has been sent.
-      </div>
-      <p style="margin-top:1rem;">Or connect on <a href="https://wa.me/918795546788" style="color:#ffd700;">WhatsApp</a> or <a href="mailto:sharmaamit55174@gmail.com" style="color:#ffd700;">Email</a></p>
+  <input type="text" name="name" placeholder="Your Name" required />
+  <input type="email" name="email" placeholder="Your Email" required />
+  <input type="text" name="subject" placeholder="Subject" required />
+  <select name="country" required>
+    <option value="">Select Country</option>
+    <option value="India">India</option>
+    <option value="USA">USA</option>
+    <option value="UK">UK</option>
+    <!-- More countries as needed -->
+  </select>
+  <input type="tel" name="phone" placeholder="Phone Number" pattern="[0-9]{10}" />
+  <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+  <button type="submit">Send Message</button>
+</form>
+<div id="success-message" style="display:none; color: #38c172; font-weight: bold; margin-top: 1rem;">
+  Thank you! Your message has been sent.
+</div>
+ <p style="margin-top:1rem;">Or connect on <a href="https://wa.me/918795546788" style="color:#ffd700;">WhatsApp</a> or <a href="mailto:sharmaamit55174@gmail.com" style="color:#ffd700;">Email</a></p>
     </section>
   </main>
-  <!-- =======================
-       FOOTER SECTION
-       ======================= -->
   <footer>
     <div class="footer-socials">
       <a href="mailto:sharmaamit55174@gmail.com" target="_blank"><i class="fa-solid fa-envelope"></i></a>
@@ -270,11 +247,9 @@
     </div>
     &copy; 2025 Amit Sharma. All rights reserved.
   </footer>
-  <!-- =======================
-       JAVASCRIPT SECTION
-       ======================= -->
+  <!-- JS for Features -->
   <script>
-    // Vanta.js: Animated 3D waves background
+    // Vanta.js 3D Background
     VANTA.WAVES({
       el: "#vantajs-bg",
       mouseControls: true,
@@ -284,12 +259,12 @@
       minWidth: 200.00,
       scale: 1.00,
       scaleMobile: 1.00,
-      color: 0x064772,           // Wave color (dark blue)
+      color: 0x064772,
       shininess: 50.00,
       waveHeight: 30.00,
       waveSpeed: 0.9,
       zoom: 0.95,
-      backgroundColor: 0x23263a, // Background color (dark blue)
+      backgroundColor: 0x23263a,
     });
 
     // Dark/Light Mode Toggle with localStorage
@@ -303,23 +278,22 @@
       }
       localStorage.setItem('theme', mode);
     }
-    // On page load: set theme from localStorage
+    // On load
     if(localStorage.getItem('theme') === 'light') setTheme('light');
     else setTheme('dark');
-    // Button click toggles theme
     document.querySelector('.dark-toggle').onclick = function() {
       if(document.body.classList.contains('light-mode')) setTheme('dark');
       else setTheme('light');
     };
 
-    // Animated Skill Bars (on load, animate width)
+    // Animated Skill Bars
     window.onload = function() {
       document.querySelectorAll('.skill-bar span').forEach(function(bar) {
         setTimeout(() => { bar.style.width = bar.getAttribute('data-width'); }, 400);
       });
     };
 
-    // Project Filtering (show/hide projects by type)
+    // Project Filtering
     function filterProjects(type) {
       document.querySelectorAll('.filters button').forEach(btn => btn.classList.remove('active'));
       event.target.classList.add('active');
@@ -331,8 +305,7 @@
         }
       });
     }
-
-    // Accessibility: Font Size & Contrast Controls
+    // Accessibility: Font Size & Contrast
     let fontSize = 16;
     function changeFont(delta) {
       fontSize += delta;
@@ -345,18 +318,17 @@
     }
   </script>
   <script>
-    // Contact Form: After submit, reset fields and show success message
-    document.getElementById('contactForm').onsubmit = function() {
-      // Small delay so Formspree can receive data before reset
-      setTimeout(() => {
-        this.reset();
-        document.getElementById('success-message').style.display = 'block';
-        // Hide success message after 5 seconds (optional)
-        setTimeout(() => {
-          document.getElementById('success-message').style.display = 'none';
-        }, 5000);
-      }, 100);
-    };
-  </script>
+document.getElementById('contactForm').onsubmit = function() {
+  // Thoda delay taki Formspree ko data mil jaye
+  setTimeout(() => {
+    this.reset();
+    document.getElementById('success-message').style.display = 'block';
+    // Success message 5 seconds baad hide ho jaye (optional)
+    setTimeout(() => {
+      document.getElementById('success-message').style.display = 'none';
+    }, 5000);
+  }, 100);
+};
+</script>
 </body>
 </html>
