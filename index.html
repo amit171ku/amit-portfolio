@@ -180,7 +180,39 @@
       user-select: none;
       letter-spacing: 2px;
       font-weight: 700;
-    }
+    }.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.hero-buttons a.download-btn {
+  background: transparent;
+  border: 2px solid #ffd700;
+  color: #ffd700;
+  border-radius: 50px;
+  padding: 0.9rem 2.4rem;
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+.hero-buttons a.download-btn:hover,
+.hero-buttons a.download-btn:focus {
+  background: #ffd700;
+  color: #121124;
+  box-shadow: 0 0 40px #ffd700;
+  outline: none;
+}
+body.light .hero-buttons a.download-btn {
+  border-color: #ffb300;
+  color: #ffb300;
+}
+body.light .hero-buttons a.download-btn:hover {
+  background: #ffb300;
+  color: #fff;
+  box-shadow: 0 0 40px #ffb300;
+}
     /* About */
     #about p {
       max-width: 720px;
@@ -551,7 +583,12 @@
     <div class="intro">
       <h1>Hello, I'm Amit Sharma</h1>
       <p>Aspiring Web Developer and B.Tech Student specialized in AI & ML. I am passionate about crafting modern, impactful digital experiences with clean, responsive design.</p>
-      <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get in Touch</button>
+<div class="hero-buttons">
+  <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+    Get in Touch
+  </button>
+  <a href="Amit_Sharma_Resume.pdf" download class="download-btn">Download Resume</a>
+</div>
     </div>
     <img src="https://i.ibb.co/sJHd0mX8/IMG-20250430-184141.jpg" alt="Amit Sharma Profile" class="profile-pic" />
   </section>
@@ -852,3 +889,4 @@
   </script>
 </body>
 </html>
+
