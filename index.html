@@ -7,7 +7,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Cabinet+Grotesk:wght@300;400;500;700;800;900&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css" media="print" onload="this.media='all'; this.onload=null;"/>
 <style>
 /* ===================== ROOTS & TOKENS ===================== */
 :root{
@@ -310,25 +309,15 @@ section{position:relative;z-index:1}
 }
 
 .card-avatar{
-  width:100px;height:100px;border-radius:50%;
+  width:90px;height:90px;border-radius:50%;
   background:linear-gradient(135deg,var(--violet),var(--violet2),var(--lime));
   display:flex;align-items:center;justify-content:center;
   font-family: var(--font-display);
   font-size:2.5rem;color:var(--void);
   margin:0 auto 1.5rem;
-  box-shadow:0 0 0 3px var(--void), 0 0 0 5px rgba(163,230,53,.5), 0 8px 32px rgba(124,58,237,.45);
+  box-shadow:0 0 0 4px rgba(163,230,53,.2),0 0 30px rgba(124,58,237,.4);
   position:relative;z-index:3;
-  overflow:hidden;
-  padding:0;
 }
-.card-avatar img{
-  width:100%;height:100%;
-  object-fit:cover;object-position:center top;
-  border-radius:50%;
-  display:block;
-  transition:transform .4s ease;
-}
-.card-avatar:hover img{transform:scale(1.07);}
 
 .card-name{
   font-family: var(--font-head);
@@ -762,9 +751,8 @@ footer{
 #stbtn.show{display:flex}
 
 /* ===================== ANIMATIONS ===================== */
-.reveal{opacity:1;transform:none}
-.reveal.anim{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
-.reveal.anim.vis{opacity:1;transform:none}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.vis{opacity:1;transform:none}
 .rd1{transition-delay:.1s}.rd2{transition-delay:.2s}.rd3{transition-delay:.3s}.rd4{transition-delay:.4s}
 
 /* ===================== MOBILE BOTTOM NAV ===================== */
@@ -969,9 +957,6 @@ footer{
   .swiper-dot{width:6px;height:6px;border-radius:50%;background:var(--text4);transition:all .3s;border:none;}
   .swiper-dot.active{background:var(--lime);width:18px;border-radius:3px;}
 }
-
-/* Icon fallback - hide broken squares if FA not loaded */
-.fa-solid, .fa-brands, .fa-regular { font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands", sans-serif; }
 </style>
 </head>
 <body>
@@ -1059,13 +1044,7 @@ footer{
       <div class="float-chip fc-3"><i class="fa-solid fa-bolt"></i> FastAPI + React</div>
       <div class="card-3d" id="card3d">
         <div class="card-shimmer"></div>
-        <div class="card-avatar">
-          <img 
-            src="https://i.ibb.co/HfWPZTTX/file-00000000cd587209ab430c1027a13a6b.png" 
-            alt="Amit Sharma"
-            onerror="this.style.display='none';this.parentElement.innerHTML='AS';"
-          />
-        </div>
+        <div class="card-avatar">AS</div>
         <div class="card-name">Amit Sharma</div>
         <div class="card-sub">Ghaziabad, U.P. · AKGEC</div>
         <div class="card-chips">
@@ -1076,7 +1055,7 @@ footer{
           <span class="chip chip-a">ARIMA</span>
         </div>
         <div class="card-contacts">
-          <a href="/cdn-cgi/l/email-protection#c9baa1a8bba4a8a8a4a0bdfcfcf8fefd89aea4a8a0a5e7aaa6a4" class="card-contact-item"><i class="fa-solid fa-envelope"></i> <span class="__cf_email__" data-cfemail="31425950435c50505c5845040400060571565c50585d1f525e5c">[email&#160;protected]</span></a>
+          <a href="mailto:sharmaamit55174@gmail.com" class="card-contact-item"><i class="fa-solid fa-envelope"></i> sharmaamit55174@gmail.com</a>
           <a href="tel:+918795546788" class="card-contact-item"><i class="fa-solid fa-phone"></i> +91 87955 46788</a>
           <a href="https://linkedin.com/in/amit-sharma174" target="_blank" class="card-contact-item"><i class="fa-brands fa-linkedin"></i> linkedin.com/in/amit-sharma174</a>
           <a href="https://github.com/amit171ku" target="_blank" class="card-contact-item"><i class="fa-brands fa-github"></i> github.com/amit171ku</a>
@@ -1398,7 +1377,7 @@ footer{
     <p class="sec-sub reveal">Open to fresher roles, internships, or collaboration on interesting projects.</p>
     <div class="contact-grid">
       <div class="contact-links reveal">
-        <a href="/cdn-cgi/l/email-protection#42312a23302f23232f2b36777773757602252f232b2e6c212d2f" class="clink"><div class="clink-ico"><i class="fa-solid fa-envelope"></i></div><div><div class="clink-label">Email</div><div class="clink-val"><span class="__cf_email__" data-cfemail="0f7c676e7d626e6e62667b3a3a3e383b4f68626e6663216c6062">[email&#160;protected]</span></div></div></a>
+        <a href="mailto:sharmaamit55174@gmail.com" class="clink"><div class="clink-ico"><i class="fa-solid fa-envelope"></i></div><div><div class="clink-label">Email</div><div class="clink-val">sharmaamit55174@gmail.com</div></div></a>
         <a href="tel:+918795546788" class="clink"><div class="clink-ico"><i class="fa-solid fa-phone"></i></div><div><div class="clink-label">Phone</div><div class="clink-val">+91 87955 46788</div></div></a>
         <a href="https://linkedin.com/in/amit-sharma174" target="_blank" class="clink"><div class="clink-ico"><i class="fa-brands fa-linkedin"></i></div><div><div class="clink-label">LinkedIn</div><div class="clink-val">linkedin.com/in/amit-sharma174</div></div></a>
         <a href="https://github.com/amit171ku" target="_blank" class="clink"><div class="clink-ico"><i class="fa-brands fa-github"></i></div><div><div class="clink-label">GitHub</div><div class="clink-val">github.com/amit171ku</div></div></a>
@@ -1432,7 +1411,7 @@ footer{
     <div class="ft-copy">© 2025 Amit Sharma. Built with ♥</div>
   </div>
   <div class="ft-socials">
-    <a href="/cdn-cgi/l/email-protection#7f0c171e0d121e1e12160b4a4a4e484b3f18121e1613511c1012" class="soc"><i class="fa-solid fa-envelope"></i></a>
+    <a href="mailto:sharmaamit55174@gmail.com" class="soc"><i class="fa-solid fa-envelope"></i></a>
     <a href="https://github.com/amit171ku" target="_blank" class="soc"><i class="fa-brands fa-github"></i></a>
     <a href="https://linkedin.com/in/amit-sharma174" target="_blank" class="soc"><i class="fa-brands fa-linkedin"></i></a>
     <a href="https://wa.me/918795546788" target="_blank" class="soc"><i class="fa-brands fa-whatsapp"></i></a>
@@ -1460,7 +1439,7 @@ footer{
   <i class="fa-solid fa-rotate-right ptr-spin"></i> Refreshing...
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 const isMobile = () => window.innerWidth <= 768;
 const isTouchDevice = () => ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
 
@@ -1594,25 +1573,11 @@ if(hamburger){
 }
 
 // ---- Reveal on Scroll ----
-function initReveals() {
-  const els = document.querySelectorAll('.reveal');
-  // Add anim class to all, then check which are in viewport
-  els.forEach(el => el.classList.add('anim'));
-  
-  function checkVisible() {
-    document.querySelectorAll('.reveal.anim:not(.vis)').forEach(el => {
-      const r = el.getBoundingClientRect();
-      if (r.top < window.innerHeight - 20 && r.bottom > 0) el.classList.add('vis');
-    });
-  }
-  
-  // Check immediately and on scroll
-  checkVisible();
-  setTimeout(checkVisible, 50);
-  setTimeout(checkVisible, 200);
-  window.addEventListener('scroll', checkVisible, { passive: true });
-}
-initReveals();
+document.querySelectorAll('.reveal').forEach(el => {
+  new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('vis'); });
+  },{threshold:.08}).observe(el);
+});
 
 // ---- Project Filter ----
 document.querySelectorAll('.pf-btn').forEach(btn => {
@@ -1746,4 +1711,30 @@ document.querySelectorAll('.haptic-btn').forEach(btn => {
 // ---- Long press on contact links to copy ----
 document.querySelectorAll('.clink').forEach(link => {
   let timer;
-  link.addEventListener('t
+  link.addEventListener('touchstart', () => {
+    timer = setTimeout(() => {
+      const val = link.querySelector('.clink-val')?.textContent;
+      if(val && navigator.clipboard){
+        navigator.clipboard.writeText(val).then(() => {
+          showToast('fa-solid fa-copy', `Copied!`);
+          if(navigator.vibrate) navigator.vibrate([20,40,20]);
+        });
+      }
+    }, 600);
+  }, {passive:true});
+  link.addEventListener('touchend', () => clearTimeout(timer), {passive:true});
+  link.addEventListener('touchmove', () => clearTimeout(timer), {passive:true});
+});
+
+// ---- Hero reveal on load ----
+setTimeout(() => document.querySelectorAll('#hero .reveal').forEach(el => el.classList.add('vis')), 100);
+
+// ---- Show "swipe" hint toast on mobile after 2s ----
+setTimeout(() => {
+  if(isMobile()){
+    showToast('fa-solid fa-hand-pointer', 'Long press contacts to copy!', 3500);
+  }
+}, 2500);
+</script>
+</body>
+</html>
