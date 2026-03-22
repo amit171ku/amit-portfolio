@@ -309,15 +309,25 @@ section{position:relative;z-index:1}
 }
 
 .card-avatar{
-  width:90px;height:90px;border-radius:50%;
+  width:100px;height:100px;border-radius:50%;
   background:linear-gradient(135deg,var(--violet),var(--violet2),var(--lime));
   display:flex;align-items:center;justify-content:center;
   font-family: var(--font-display);
   font-size:2.5rem;color:var(--void);
   margin:0 auto 1.5rem;
-  box-shadow:0 0 0 4px rgba(163,230,53,.2),0 0 30px rgba(124,58,237,.4);
+  box-shadow:0 0 0 3px var(--void), 0 0 0 5px rgba(163,230,53,.5), 0 8px 32px rgba(124,58,237,.45);
   position:relative;z-index:3;
+  overflow:hidden;
+  padding:0;
 }
+.card-avatar img{
+  width:100%;height:100%;
+  object-fit:cover;object-position:center top;
+  border-radius:50%;
+  display:block;
+  transition:transform .4s ease;
+}
+.card-avatar:hover img{transform:scale(1.07);}
 
 .card-name{
   font-family: var(--font-head);
@@ -1044,7 +1054,13 @@ footer{
       <div class="float-chip fc-3"><i class="fa-solid fa-bolt"></i> FastAPI + React</div>
       <div class="card-3d" id="card3d">
         <div class="card-shimmer"></div>
-        <div class="card-avatar">AS</div>
+        <div class="card-avatar">
+          <img 
+            src="https://drive.google.com/uc?export=view&id=1-Oqc5EbIk3voF7ERQ_IH1VLqiTBjsnZI" 
+            alt="Amit Sharma"
+            onerror="this.style.display='none';this.parentElement.innerHTML='AS';"
+          />
+        </div>
         <div class="card-name">Amit Sharma</div>
         <div class="card-sub">Ghaziabad, U.P. · AKGEC</div>
         <div class="card-chips">
@@ -1055,7 +1071,7 @@ footer{
           <span class="chip chip-a">ARIMA</span>
         </div>
         <div class="card-contacts">
-          <a href="mailto:sharmaamit55174@gmail.com" class="card-contact-item"><i class="fa-solid fa-envelope"></i> sharmaamit55174@gmail.com</a>
+          <a href="/cdn-cgi/l/email-protection#61120900130c00000c0815545450565521060c00080d4f020e0c" class="card-contact-item"><i class="fa-solid fa-envelope"></i> <span class="__cf_email__" data-cfemail="8bf8e3eaf9e6eaeae6e2ffbebebabcbfcbece6eae2e7a5e8e4e6">[email&#160;protected]</span></a>
           <a href="tel:+918795546788" class="card-contact-item"><i class="fa-solid fa-phone"></i> +91 87955 46788</a>
           <a href="https://linkedin.com/in/amit-sharma174" target="_blank" class="card-contact-item"><i class="fa-brands fa-linkedin"></i> linkedin.com/in/amit-sharma174</a>
           <a href="https://github.com/amit171ku" target="_blank" class="card-contact-item"><i class="fa-brands fa-github"></i> github.com/amit171ku</a>
@@ -1377,7 +1393,7 @@ footer{
     <p class="sec-sub reveal">Open to fresher roles, internships, or collaboration on interesting projects.</p>
     <div class="contact-grid">
       <div class="contact-links reveal">
-        <a href="mailto:sharmaamit55174@gmail.com" class="clink"><div class="clink-ico"><i class="fa-solid fa-envelope"></i></div><div><div class="clink-label">Email</div><div class="clink-val">sharmaamit55174@gmail.com</div></div></a>
+        <a href="/cdn-cgi/l/email-protection#fd8e959c8f909c9c909489c8c8cccac9bd9a909c9491d39e9290" class="clink"><div class="clink-ico"><i class="fa-solid fa-envelope"></i></div><div><div class="clink-label">Email</div><div class="clink-val"><span class="__cf_email__" data-cfemail="f1829990839c90909c9885c4c4c0c6c5b1969c90989ddf929e9c">[email&#160;protected]</span></div></div></a>
         <a href="tel:+918795546788" class="clink"><div class="clink-ico"><i class="fa-solid fa-phone"></i></div><div><div class="clink-label">Phone</div><div class="clink-val">+91 87955 46788</div></div></a>
         <a href="https://linkedin.com/in/amit-sharma174" target="_blank" class="clink"><div class="clink-ico"><i class="fa-brands fa-linkedin"></i></div><div><div class="clink-label">LinkedIn</div><div class="clink-val">linkedin.com/in/amit-sharma174</div></div></a>
         <a href="https://github.com/amit171ku" target="_blank" class="clink"><div class="clink-ico"><i class="fa-brands fa-github"></i></div><div><div class="clink-label">GitHub</div><div class="clink-val">github.com/amit171ku</div></div></a>
@@ -1411,7 +1427,7 @@ footer{
     <div class="ft-copy">© 2025 Amit Sharma. Built with ♥</div>
   </div>
   <div class="ft-socials">
-    <a href="mailto:sharmaamit55174@gmail.com" class="soc"><i class="fa-solid fa-envelope"></i></a>
+    <a href="/cdn-cgi/l/email-protection#d0a3b8b1a2bdb1b1bdb9a4e5e5e1e7e490b7bdb1b9bcfeb3bfbd" class="soc"><i class="fa-solid fa-envelope"></i></a>
     <a href="https://github.com/amit171ku" target="_blank" class="soc"><i class="fa-brands fa-github"></i></a>
     <a href="https://linkedin.com/in/amit-sharma174" target="_blank" class="soc"><i class="fa-brands fa-linkedin"></i></a>
     <a href="https://wa.me/918795546788" target="_blank" class="soc"><i class="fa-brands fa-whatsapp"></i></a>
@@ -1439,7 +1455,7 @@ footer{
   <i class="fa-solid fa-rotate-right ptr-spin"></i> Refreshing...
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const isMobile = () => window.innerWidth <= 768;
 const isTouchDevice = () => ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
 
@@ -1722,19 +1738,4 @@ document.querySelectorAll('.clink').forEach(link => {
       }
     }, 600);
   }, {passive:true});
-  link.addEventListener('touchend', () => clearTimeout(timer), {passive:true});
-  link.addEventListener('touchmove', () => clearTimeout(timer), {passive:true});
-});
-
-// ---- Hero reveal on load ----
-setTimeout(() => document.querySelectorAll('#hero .reveal').forEach(el => el.classList.add('vis')), 100);
-
-// ---- Show "swipe" hint toast on mobile after 2s ----
-setTimeout(() => {
-  if(isMobile()){
-    showToast('fa-solid fa-hand-pointer', 'Long press contacts to copy!', 3500);
-  }
-}, 2500);
-</script>
-</body>
-</html>
+  link.addEventListener('touchend', () => clearTimeout(timer), {passiv
