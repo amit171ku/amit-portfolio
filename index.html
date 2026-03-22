@@ -755,10 +755,158 @@ footer{
 .reveal.vis{opacity:1;transform:none}
 .rd1{transition-delay:.1s}.rd2{transition-delay:.2s}.rd3{transition-delay:.3s}.rd4{transition-delay:.4s}
 
+/* ===================== MOBILE BOTTOM NAV ===================== */
+.mob-nav{
+  display:none;
+  position:fixed;bottom:0;left:0;right:0;z-index:2000;
+  background:rgba(6,4,14,.95);
+  backdrop-filter:blur(24px) saturate(180%);
+  border-top:1px solid var(--border);
+  padding:0 .5rem;
+  padding-bottom:env(safe-area-inset-bottom, 0px);
+  height:64px;
+  align-items:stretch;
+  justify-content:space-around;
+}
+.mob-nav-item{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:.25rem;flex:1;padding:.5rem .3rem;
+  color:var(--text4);text-decoration:none;
+  font-size:.6rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;
+  font-family:var(--font-mono);
+  transition:color .2s;
+  position:relative;
+  -webkit-tap-highlight-color:transparent;
+  border:none;background:none;cursor:pointer;
+}
+.mob-nav-item i{font-size:1.1rem;transition:transform .25s cubic-bezier(.34,1.56,.64,1),color .2s;}
+.mob-nav-item.active{color:var(--lime);}
+.mob-nav-item.active i{transform:scale(1.25);}
+.mob-nav-item::after{
+  content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:0;height:2px;background:var(--lime);border-radius:0 0 4px 4px;
+  transition:width .3s cubic-bezier(.34,1.56,.64,1);
+}
+.mob-nav-item.active::after{width:60%;}
+
+/* Ripple effect */
+.mob-nav-item .ripple{
+  position:absolute;border-radius:50%;
+  background:rgba(163,230,53,.25);
+  transform:scale(0);animation:ripple-anim .5s linear;
+  pointer-events:none;
+}
+@keyframes ripple-anim{to{transform:scale(4);opacity:0;}}
+
+/* ===================== MOBILE SWIPEABLE SKILLS ===================== */
+.mob-skills-swiper{
+  display:none;
+  overflow-x:auto;gap:.7rem;
+  padding-bottom:.5rem;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+}
+.mob-skills-swiper::-webkit-scrollbar{display:none}
+.mob-skill-group{
+  flex-shrink:0;scroll-snap-align:start;
+  background:rgba(19,16,42,.9);border:1px solid var(--border);
+  border-radius:14px;padding:1.2rem;min-width:260px;
+}
+.mob-skill-group-title{
+  font-family:var(--font-mono);font-size:.7rem;font-weight:700;
+  color:var(--lime);letter-spacing:1.5px;text-transform:uppercase;
+  margin-bottom:.9rem;display:flex;align-items:center;gap:.5rem;
+}
+.mob-skill-group-title i{font-size:.85rem}
+.mob-skill-pills{display:flex;flex-wrap:wrap;gap:.5rem}
+.mob-skill-pill{
+  background:rgba(124,58,237,.1);border:1px solid var(--border);
+  color:var(--violet3);padding:.3rem .7rem;border-radius:20px;
+  font-size:.75rem;font-weight:600;font-family:var(--font-mono);
+  display:flex;align-items:center;gap:.35rem;white-space:nowrap;
+  transition:all .2s;
+}
+.mob-skill-pill:active{background:rgba(163,230,53,.12);color:var(--lime);border-color:rgba(163,230,53,.3);transform:scale(.95);}
+
+/* ===================== MOBILE CARD 3D TOUCH TILT ===================== */
+.card-3d{transition:transform .15s ease, box-shadow .15s ease;}
+
+/* ===================== MOBILE ACCORDION (About info cards) ===================== */
+@media(max-width:600px){
+  .icard{cursor:pointer;}
+  .icard .icard-body{
+    max-height:0;overflow:hidden;
+    transition:max-height .4s cubic-bezier(.4,0,.2,1);
+  }
+  .icard.open .icard-body{max-height:400px;}
+  .icard h4::after{
+    content:'\f107';font-family:'Font Awesome 6 Free';font-weight:900;
+    margin-left:auto;font-size:.8rem;color:var(--text3);
+    transition:transform .3s;
+  }
+  .icard.open h4::after{transform:rotate(180deg);color:var(--lime);}
+}
+
+/* ===================== PULL-TO-REFRESH INDICATOR ===================== */
+.ptr-indicator{
+  position:fixed;top:68px;left:50%;transform:translateX(-50%) translateY(-60px);
+  background:rgba(19,16,42,.95);border:1px solid var(--border);
+  border-radius:99px;padding:.4rem 1.1rem;
+  display:flex;align-items:center;gap:.5rem;
+  font-size:.75rem;font-weight:600;color:var(--lime);
+  font-family:var(--font-mono);z-index:900;
+  transition:transform .3s cubic-bezier(.34,1.56,.64,1),opacity .3s;
+  opacity:0;pointer-events:none;
+}
+.ptr-indicator.show{transform:translateX(-50%) translateY(0);opacity:1;}
+.ptr-spin{animation:spin .8s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+/* ===================== TOAST NOTIFICATIONS ===================== */
+.toast-container{
+  position:fixed;bottom:80px;left:50%;transform:translateX(-50%);
+  z-index:5000;display:flex;flex-direction:column;gap:.5rem;
+  align-items:center;pointer-events:none;
+}
+.toast{
+  background:rgba(19,16,42,.97);border:1px solid var(--border);
+  border-radius:99px;padding:.5rem 1.2rem;
+  display:flex;align-items:center;gap:.5rem;
+  font-size:.78rem;font-weight:600;color:var(--text);
+  font-family:var(--font-mono);
+  box-shadow:0 8px 30px rgba(0,0,0,.5);
+  animation:toast-in .35s cubic-bezier(.34,1.56,.64,1) forwards;
+  white-space:nowrap;
+}
+.toast i{color:var(--lime);}
+@keyframes toast-in{from{opacity:0;transform:translateY(20px) scale(.9)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes toast-out{to{opacity:0;transform:translateY(-10px) scale(.9)}}
+.toast.out{animation:toast-out .3s ease forwards;}
+
+/* ===================== HAPTIC BUTTON FEEDBACK ===================== */
+.haptic-btn{
+  -webkit-tap-highlight-color:transparent;
+  transition:transform .1s,box-shadow .1s;
+}
+.haptic-btn:active{transform:scale(.96)!important;}
+
+/* ===================== MOBILE HERO CARD SWIPE ===================== */
+.hero-card-scroll-hint{
+  display:none;
+  align-items:center;justify-content:center;gap:.4rem;
+  color:var(--text4);font-size:.7rem;font-family:var(--font-mono);
+  margin-top:.8rem;
+  animation:hint-fade 2s ease-in-out infinite;
+}
+@keyframes hint-fade{0%,100%{opacity:.4}50%{opacity:1}}
+.hint-arrow{animation:hint-slide 2s ease-in-out infinite;}
+@keyframes hint-slide{0%,100%{transform:translateX(0)}50%{transform:translateX(6px)}}
+
 /* ===================== RESPONSIVE ===================== */
 @media(max-width:960px){
   .hero-inner,.about-grid,.exp-timeline,.contact-grid{grid-template-columns:1fr}
-  .card-3d-scene{display:flex;justify-content:center}
+  .card-3d-scene{display:flex;justify-content:center;margin-top:2rem;}
   .card-3d{max-width:340px}
   .fc-1,.fc-2,.fc-3{display:none}
   .proj-card.featured{grid-column:span 1;flex-direction:column}
@@ -767,14 +915,47 @@ footer{
   .hamburger{display:block}
   .hero-name-line{font-size:clamp(3.5rem,12vw,5rem)}
 }
+
+@media(max-width:768px){
+  /* Show mobile bottom nav */
+  .mob-nav{display:flex;}
+  /* Hide hamburger + mobile dropdown, nav is now bottom bar */
+  .hamburger{display:none!important;}
+  #mobileMenu{display:none!important;}
+  /* Hide old scroll-to-top (now in bottom area) */
+  #stbtn{bottom:5rem;}
+  /* Add padding so content not hidden behind bottom nav */
+  body{padding-bottom:64px;}
+  /* Show mobile skills swiper, hide desktop */
+  .mob-skills-swiper{display:flex;}
+  .skills-all{display:none;}
+  /* Show card swipe hint */
+  .hero-card-scroll-hint{display:flex;}
+  /* Proj grid single col */
+  .proj-grid{grid-template-columns:1fr;}
+  /* Cert grid single col */
+  .cert-grid{grid-template-columns:1fr;}
+}
+
 @media(max-width:600px){
-  .sec-wrap{padding:70px 1.3rem}
+  .sec-wrap{padding:70px 1.2rem 80px;}
   .frow{grid-template-columns:1fr}
-  .hero-stats{gap:1.2rem}
+  .hero-stats{gap:1rem;flex-wrap:wrap;}
   .hero-btns{flex-direction:column}
-  .btn-primary,.btn-ghost{width:100%;justify-content:center}
+  .btn-primary,.btn-ghost{width:100%;justify-content:center;padding:.85rem 1rem;}
   .cursor-dot,.cursor-ring{display:none}
   body{cursor:auto}
+  .hero-name-line{font-size:clamp(3rem,14vw,4.5rem);}
+  .sec-title{font-size:clamp(1.7rem,7vw,2.4rem);}
+  /* Bigger touch targets */
+  .sk{padding:.85rem 1.2rem;}
+  .clink{padding:1.2rem 1.4rem;}
+  /* Larger form inputs on mobile */
+  .fg input,.fg textarea,.fg select{font-size:16px;} /* prevents iOS zoom */
+  /* Swiper dots indicator */
+  .swiper-dots{display:flex;justify-content:center;gap:.4rem;margin-top:.8rem;}
+  .swiper-dot{width:6px;height:6px;border-radius:50%;background:var(--text4);transition:all .3s;border:none;}
+  .swiper-dot.active{background:var(--lime);width:18px;border-radius:3px;}
 }
 </style>
 </head>
@@ -880,6 +1061,9 @@ footer{
           <a href="https://github.com/amit171ku" target="_blank" class="card-contact-item"><i class="fa-brands fa-github"></i> github.com/amit171ku</a>
         </div>
       </div>
+      <div class="hero-card-scroll-hint">
+        <span>Tilt the card</span><i class="fa-solid fa-hand-pointer hint-arrow"></i>
+      </div>
     </div>
   </div>
 </section>
@@ -902,8 +1086,9 @@ footer{
         </div>
       </div>
       <div class="info-cards reveal rd1">
-        <div class="icard">
+        <div class="icard" id="icard-edu">
           <h4><i class="fa-solid fa-graduation-cap"></i> Education</h4>
+          <div class="icard-body">
           <div class="edu-row">
             <div class="edu-school">Ajay Kumar Garg Engineering College</div>
             <div class="edu-deg">B.Tech CSE (AI &amp; ML)</div>
@@ -914,9 +1099,11 @@ footer{
             <div class="edu-deg">Diploma in Electronics Engineering — 74.6%</div>
             <div class="edu-yr">Completed</div>
           </div>
+          </div>
         </div>
-        <div class="icard">
+        <div class="icard" id="icard-course">
           <h4><i class="fa-solid fa-book"></i> Coursework</h4>
+          <div class="icard-body">
           <ul>
             <li>Machine Learning &amp; Deep Learning</li>
             <li>Natural Language Processing</li>
@@ -924,10 +1111,13 @@ footer{
             <li>DBMS &amp; Operating Systems</li>
             <li>OOP &amp; Software Engineering</li>
           </ul>
+          </div>
         </div>
-        <div class="icard">
+        <div class="icard" id="icard-lang">
           <h4><i class="fa-solid fa-language"></i> Languages</h4>
+          <div class="icard-body">
           <ul><li>Hindi — Native</li><li>English — Professional</li></ul>
+          </div>
         </div>
       </div>
     </div>
@@ -988,6 +1178,54 @@ footer{
         </div>
       </div>
     </div>
+
+    <!-- Mobile Swipeable Skills -->
+    <div class="mob-skills-swiper" id="mobSkillsSwiper">
+      <div class="mob-skill-group">
+        <div class="mob-skill-group-title"><i class="fa-solid fa-terminal"></i> Languages</div>
+        <div class="mob-skill-pills">
+          <span class="mob-skill-pill">🐍 Python</span>
+          <span class="mob-skill-pill">⚡ JavaScript</span>
+          <span class="mob-skill-pill">🗄️ SQL</span>
+          <span class="mob-skill-pill">⚙️ C++</span>
+        </div>
+      </div>
+      <div class="mob-skill-group">
+        <div class="mob-skill-group-title"><i class="fa-solid fa-globe"></i> Frontend &amp; Backend</div>
+        <div class="mob-skill-pills">
+          <span class="mob-skill-pill">⚛️ React.js</span>
+          <span class="mob-skill-pill">🎨 Tailwind</span>
+          <span class="mob-skill-pill">🚀 FastAPI</span>
+          <span class="mob-skill-pill">🟩 Node.js</span>
+          <span class="mob-skill-pill">🔧 Express</span>
+          <span class="mob-skill-pill">🔐 JWT Auth</span>
+          <span class="mob-skill-pill">🔗 REST APIs</span>
+        </div>
+      </div>
+      <div class="mob-skill-group">
+        <div class="mob-skill-group-title"><i class="fa-solid fa-brain"></i> ML / AI</div>
+        <div class="mob-skill-pills">
+          <span class="mob-skill-pill">🔬 Scikit-learn</span>
+          <span class="mob-skill-pill">🔥 PyTorch</span>
+          <span class="mob-skill-pill">📊 ARIMA</span>
+          <span class="mob-skill-pill">🗣️ NLTK/NLP</span>
+          <span class="mob-skill-pill">🐼 Pandas</span>
+          <span class="mob-skill-pill">🔢 NumPy</span>
+        </div>
+      </div>
+      <div class="mob-skill-group">
+        <div class="mob-skill-group-title"><i class="fa-solid fa-database"></i> Databases &amp; Tools</div>
+        <div class="mob-skill-pills">
+          <span class="mob-skill-pill">🍃 MongoDB</span>
+          <span class="mob-skill-pill">🐬 MySQL</span>
+          <span class="mob-skill-pill">🪶 SQLite</span>
+          <span class="mob-skill-pill">📊 Power BI</span>
+          <span class="mob-skill-pill">⚡ Git</span>
+          <span class="mob-skill-pill">📮 Postman</span>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-dots" id="swiperDots" style="display:none"></div>
   </div>
 </section>
 
@@ -1184,36 +1422,103 @@ footer{
 <!-- Scroll Top -->
 <button id="stbtn"><i class="fa-solid fa-chevron-up"></i></button>
 
+<!-- Mobile Bottom Navigation -->
+<nav class="mob-nav" id="mobNav">
+  <a href="#hero"     class="mob-nav-item haptic-btn active" data-sec="hero"><i class="fa-solid fa-house"></i><span>Home</span></a>
+  <a href="#about"    class="mob-nav-item haptic-btn" data-sec="about"><i class="fa-solid fa-user"></i><span>About</span></a>
+  <a href="#skills"   class="mob-nav-item haptic-btn" data-sec="skills"><i class="fa-solid fa-code"></i><span>Skills</span></a>
+  <a href="#projects" class="mob-nav-item haptic-btn" data-sec="projects"><i class="fa-solid fa-folder-open"></i><span>Projects</span></a>
+  <a href="#contact"  class="mob-nav-item haptic-btn" data-sec="contact"><i class="fa-solid fa-paper-plane"></i><span>Contact</span></a>
+</nav>
+
+<!-- Toast Container -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- Pull-to-refresh Indicator -->
+<div class="ptr-indicator" id="ptrIndicator">
+  <i class="fa-solid fa-rotate-right ptr-spin"></i> Refreshing...
+</div>
+
 <script>
-// ---- Custom Cursor ----
+const isMobile = () => window.innerWidth <= 768;
+const isTouchDevice = () => ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
+
+// ---- Custom Cursor (desktop only) ----
 const cd = document.getElementById('cd');
 const cr = document.getElementById('cr');
-document.addEventListener('mousemove', e => {
-  cd.style.left = e.clientX + 'px';
-  cd.style.top = e.clientY + 'px';
-  cr.style.left = e.clientX + 'px';
-  cr.style.top = e.clientY + 'px';
-});
-document.querySelectorAll('a,button,.sk,.cert-card,.exp-card,.proj-card').forEach(el => {
-  el.addEventListener('mouseenter', () => {
-    cr.style.transform = 'translate(-50%,-50%) scale(1.8)';
-    cr.style.borderColor = 'rgba(163,230,53,.8)';
+if(!isTouchDevice()){
+  document.addEventListener('mousemove', e => {
+    cd.style.left = e.clientX + 'px'; cd.style.top = e.clientY + 'px';
+    cr.style.left = e.clientX + 'px'; cr.style.top = e.clientY + 'px';
   });
-  el.addEventListener('mouseleave', () => {
-    cr.style.transform = 'translate(-50%,-50%) scale(1)';
-    cr.style.borderColor = 'rgba(163,230,53,.5)';
+  document.querySelectorAll('a,button,.sk,.cert-card,.exp-card,.proj-card').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cr.style.transform = 'translate(-50%,-50%) scale(1.8)';
+      cr.style.borderColor = 'rgba(163,230,53,.8)';
+    });
+    el.addEventListener('mouseleave', () => {
+      cr.style.transform = 'translate(-50%,-50%) scale(1)';
+      cr.style.borderColor = 'rgba(163,230,53,.5)';
+    });
   });
+}
+
+// ---- Toast Notification ----
+function showToast(icon, msg, duration=2500){
+  const tc = document.getElementById('toastContainer');
+  const t = document.createElement('div');
+  t.className = 'toast';
+  t.innerHTML = `<i class="${icon}"></i>${msg}`;
+  tc.appendChild(t);
+  setTimeout(() => {
+    t.classList.add('out');
+    setTimeout(() => t.remove(), 350);
+  }, duration);
+}
+
+// ---- Ripple on Mobile Nav ----
+document.querySelectorAll('.mob-nav-item').forEach(btn => {
+  btn.addEventListener('touchstart', function(e){
+    const ripple = document.createElement('span');
+    ripple.className = 'ripple';
+    const size = Math.max(this.offsetWidth, this.offsetHeight) * 1.5;
+    ripple.style.cssText = `width:${size}px;height:${size}px;left:${this.offsetWidth/2 - size/2}px;top:${this.offsetHeight/2 - size/2}px`;
+    this.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 500);
+    // Haptic feedback
+    if(navigator.vibrate) navigator.vibrate(8);
+  }, {passive:true});
 });
 
-// ---- 3D Card Tilt ----
+// ---- Mobile Bottom Nav Active State ----
+const mobNavItems = document.querySelectorAll('.mob-nav-item');
+function updateMobNav(secId){
+  mobNavItems.forEach(a => {
+    a.classList.toggle('active', a.dataset.sec === secId);
+  });
+}
+const allSecs = document.querySelectorAll('section[id]');
+const mobNavObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) updateMobNav(e.target.id); });
+},{threshold:.35, rootMargin:'-10% 0px -50% 0px'});
+allSecs.forEach(s => mobNavObs.observe(s));
+
+// ---- Desktop Nav Active State ----
+const navAs = document.querySelectorAll('.nav-links a');
+allSecs.forEach(s => new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting)
+      navAs.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#'+e.target.id));
+  });
+},{threshold:.35}).observe(s));
+
+// ---- 3D Card — Mouse (desktop) ----
 const card3d = document.getElementById('card3d');
-if(card3d){
+if(card3d && !isTouchDevice()){
   card3d.parentElement.addEventListener('mousemove', e => {
     const rect = card3d.getBoundingClientRect();
-    const cx = rect.left + rect.width/2;
-    const cy = rect.top + rect.height/2;
-    const dx = (e.clientX - cx) / (rect.width/2);
-    const dy = (e.clientY - cy) / (rect.height/2);
+    const dx = (e.clientX - rect.left - rect.width/2) / (rect.width/2);
+    const dy = (e.clientY - rect.top - rect.height/2) / (rect.height/2);
     card3d.style.transform = `rotateY(${dx*12}deg) rotateX(${-dy*8}deg) translateZ(10px)`;
   });
   card3d.parentElement.addEventListener('mouseleave', () => {
@@ -1221,46 +1526,63 @@ if(card3d){
   });
 }
 
-// ---- Mobile Menu ----
+// ---- 3D Card — Gyroscope + Touch Tilt (mobile) ----
+if(card3d && isTouchDevice()){
+  // Touch tilt
+  card3d.addEventListener('touchmove', e => {
+    const t = e.touches[0];
+    const rect = card3d.getBoundingClientRect();
+    const dx = (t.clientX - rect.left - rect.width/2) / (rect.width/2);
+    const dy = (t.clientY - rect.top - rect.height/2) / (rect.height/2);
+    card3d.style.transform = `rotateY(${dx*10}deg) rotateX(${-dy*6}deg) translateZ(8px)`;
+  }, {passive:true});
+  card3d.addEventListener('touchend', () => {
+    card3d.style.transform = 'rotateY(0) rotateX(0) translateZ(0)';
+  });
+
+  // Device orientation tilt
+  if(window.DeviceOrientationEvent){
+    window.addEventListener('deviceorientation', e => {
+      if(!document.querySelector('#hero').matches(':visible') && !isElementInViewport(card3d)) return;
+      const tiltX = Math.max(-15, Math.min(15, e.gamma || 0));
+      const tiltY = Math.max(-10, Math.min(10, (e.beta || 0) - 30));
+      card3d.style.transform = `rotateY(${tiltX * .8}deg) rotateX(${-tiltY * .5}deg)`;
+    }, {passive:true});
+  }
+}
+
+function isElementInViewport(el){
+  const r = el.getBoundingClientRect();
+  return r.top < window.innerHeight && r.bottom > 0;
+}
+
+// ---- Mobile Menu (hamburger - tablet only 600-768) ----
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
-hamburger.addEventListener('click', () => {
-  mobileMenu.classList.toggle('open');
-  hamburger.innerHTML = mobileMenu.classList.contains('open')
-    ? '<i class="fa-solid fa-xmark"></i>'
-    : '<i class="fa-solid fa-bars"></i>';
-});
-mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-  mobileMenu.classList.remove('open');
-  hamburger.innerHTML = '<i class="fa-solid fa-bars"></i>';
-}));
-
-// ---- Active Nav ----
-const navAs = document.querySelectorAll('.nav-links a');
-const secs = document.querySelectorAll('section[id]');
-new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if(e.isIntersecting)
-      navAs.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#'+e.target.id));
+if(hamburger){
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+    hamburger.innerHTML = mobileMenu.classList.contains('open')
+      ? '<i class="fa-solid fa-xmark"></i>'
+      : '<i class="fa-solid fa-bars"></i>';
   });
-},{threshold:.35}).observe && secs.forEach(s => new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if(e.isIntersecting)
-      navAs.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#'+e.target.id));
-  });
-},{threshold:.35}).observe(s));
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    hamburger.innerHTML = '<i class="fa-solid fa-bars"></i>';
+  }));
+}
 
 // ---- Reveal on Scroll ----
-const revs = document.querySelectorAll('.reveal');
-new IntersectionObserver(entries => {
-  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('vis'); });
-},{threshold:.1}).observe && revs.forEach(el => new IntersectionObserver(entries => {
-  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('vis'); });
-},{threshold:.08}).observe(el));
+document.querySelectorAll('.reveal').forEach(el => {
+  new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('vis'); });
+  },{threshold:.08}).observe(el);
+});
 
 // ---- Project Filter ----
 document.querySelectorAll('.pf-btn').forEach(btn => {
   btn.addEventListener('click', () => {
+    if(navigator.vibrate) navigator.vibrate(6);
     document.querySelectorAll('.pf-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     const f = btn.dataset.filter;
@@ -1273,21 +1595,146 @@ document.querySelectorAll('.pf-btn').forEach(btn => {
 // ---- Scroll Top ----
 const stbtn = document.getElementById('stbtn');
 window.addEventListener('scroll', () => stbtn.classList.toggle('show', window.scrollY > 400));
-stbtn.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
+stbtn.addEventListener('click', () => {
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(navigator.vibrate) navigator.vibrate(10);
+});
 
 // ---- Contact Form ----
 const form = document.getElementById('contactForm');
 form.addEventListener('submit', e => {
   e.preventDefault();
+  const btn = form.querySelector('.f-submit');
+  btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+  btn.disabled = true;
   fetch(form.action, {method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
     .then(r => {
-      if(r.ok){ form.reset(); const s = document.getElementById('form-success'); s.style.display='block'; setTimeout(()=>s.style.display='none',6000); }
-      else alert('Error sending. Please try again.');
-    }).catch(() => alert('Network error.'));
+      btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send Message';
+      btn.disabled = false;
+      if(r.ok){
+        form.reset();
+        document.getElementById('form-success').style.display = 'block';
+        if(isMobile()) showToast('fa-solid fa-check-circle', 'Message sent! 🎉');
+        setTimeout(() => document.getElementById('form-success').style.display='none', 6000);
+        if(navigator.vibrate) navigator.vibrate([20,50,20]);
+      } else {
+        showToast('fa-solid fa-triangle-exclamation', 'Error! Try again.');
+      }
+    }).catch(() => {
+      btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send Message';
+      btn.disabled = false;
+      showToast('fa-solid fa-wifi', 'Network error!');
+    });
 });
 
-// Trigger reveals on load for hero
+// ---- Mobile Skills Swiper Dots ----
+const swiper = document.getElementById('mobSkillsSwiper');
+const dotsContainer = document.getElementById('swiperDots');
+if(swiper && dotsContainer){
+  const groups = swiper.querySelectorAll('.mob-skill-group');
+  // Init dots
+  function initDots(){
+    if(!isMobile()){ dotsContainer.style.display='none'; return; }
+    dotsContainer.style.display = 'flex';
+    dotsContainer.innerHTML = '';
+    groups.forEach((_, i) => {
+      const d = document.createElement('button');
+      d.className = 'swiper-dot' + (i===0?' active':'');
+      d.style.border = 'none'; d.style.cursor='pointer';
+      d.addEventListener('click', () => {
+        const g = groups[i];
+        swiper.scrollTo({left: g.offsetLeft, behavior:'smooth'});
+      });
+      dotsContainer.appendChild(d);
+    });
+  }
+  initDots();
+  window.addEventListener('resize', initDots);
+
+  // Update dots on scroll
+  swiper.addEventListener('scroll', () => {
+    const dots = dotsContainer.querySelectorAll('.swiper-dot');
+    let closest = 0, minDist = Infinity;
+    groups.forEach((g, i) => {
+      const dist = Math.abs(g.offsetLeft - swiper.scrollLeft);
+      if(dist < minDist){ minDist = dist; closest = i; }
+    });
+    dots.forEach((d, i) => d.classList.toggle('active', i === closest));
+  }, {passive:true});
+}
+
+// ---- Mobile Accordion for About Cards ----
+function initAccordion(){
+  if(!isMobile()) return;
+  document.querySelectorAll('.icard').forEach((card, idx) => {
+    const body = card.querySelector('.icard-body');
+    if(!body) return;
+    // Open first by default
+    if(idx === 0) card.classList.add('open');
+    card.addEventListener('click', () => {
+      const wasOpen = card.classList.contains('open');
+      document.querySelectorAll('.icard').forEach(c => c.classList.remove('open'));
+      if(!wasOpen) card.classList.add('open');
+      if(navigator.vibrate) navigator.vibrate(6);
+    });
+  });
+}
+initAccordion();
+
+// ---- Pull-to-Refresh (visual only) ----
+let ptrStart = 0, ptrActive = false;
+const ptr = document.getElementById('ptrIndicator');
+document.addEventListener('touchstart', e => {
+  if(window.scrollY <= 0) ptrStart = e.touches[0].clientY;
+}, {passive:true});
+document.addEventListener('touchmove', e => {
+  if(window.scrollY <= 0 && e.touches[0].clientY - ptrStart > 80){
+    ptrActive = true;
+    ptr.classList.add('show');
+  }
+}, {passive:true});
+document.addEventListener('touchend', () => {
+  if(ptrActive){
+    ptrActive = false;
+    setTimeout(() => ptr.classList.remove('show'), 1200);
+    if(navigator.vibrate) navigator.vibrate([15,30,15]);
+  }
+}, {passive:true});
+
+// ---- Haptic on all haptic-btn ----
+document.querySelectorAll('.haptic-btn').forEach(btn => {
+  btn.addEventListener('touchstart', () => {
+    if(navigator.vibrate) navigator.vibrate(8);
+  }, {passive:true});
+});
+
+// ---- Long press on contact links to copy ----
+document.querySelectorAll('.clink').forEach(link => {
+  let timer;
+  link.addEventListener('touchstart', () => {
+    timer = setTimeout(() => {
+      const val = link.querySelector('.clink-val')?.textContent;
+      if(val && navigator.clipboard){
+        navigator.clipboard.writeText(val).then(() => {
+          showToast('fa-solid fa-copy', `Copied!`);
+          if(navigator.vibrate) navigator.vibrate([20,40,20]);
+        });
+      }
+    }, 600);
+  }, {passive:true});
+  link.addEventListener('touchend', () => clearTimeout(timer), {passive:true});
+  link.addEventListener('touchmove', () => clearTimeout(timer), {passive:true});
+});
+
+// ---- Hero reveal on load ----
 setTimeout(() => document.querySelectorAll('#hero .reveal').forEach(el => el.classList.add('vis')), 100);
+
+// ---- Show "swipe" hint toast on mobile after 2s ----
+setTimeout(() => {
+  if(isMobile()){
+    showToast('fa-solid fa-hand-pointer', 'Long press contacts to copy!', 3500);
+  }
+}, 2500);
 </script>
 </body>
 </html>
