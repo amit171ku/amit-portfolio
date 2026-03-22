@@ -308,16 +308,16 @@ section{position:relative;z-index:1}
   50%{background-position:100% 50%}
 }
 
-.card-avatar{
-  width:90px;height:90px;border-radius:50%;
-  background:linear-gradient(135deg,var(--violet),var(--violet2),var(--lime));
-  display:flex;align-items:center;justify-content:center;
-  font-family: var(--font-display);
-  font-size:2.5rem;color:var(--void);
-  margin:0 auto 1.5rem;
-  box-shadow:0 0 0 4px rgba(163,230,53,.2),0 0 30px rgba(124,58,237,.4);
-  position:relative;z-index:3;
+.card-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 50%;
+  display: block;
+  transition: transform .4s ease;
 }
+.card-avatar:hover img { transform: scale(1.07); }
 
 .card-name{
   font-family: var(--font-head);
@@ -1044,7 +1044,13 @@ footer{
       <div class="float-chip fc-3"><i class="fa-solid fa-bolt"></i> FastAPI + React</div>
       <div class="card-3d" id="card3d">
         <div class="card-shimmer"></div>
-        <div class="card-avatar">AS</div>
+        <div class="card-avatar">
+         <img 
+           src="https://i.ibb.co/HfWPZTTX/file-00000000cd587209ab430c1027a13a6b.png" 
+            alt="Amit Sharma"
+            onerror="this.style.display='none';this.parentElement.innerHTML='AS';"
+           />
+        </div>
         <div class="card-name">Amit Sharma</div>
         <div class="card-sub">Ghaziabad, U.P. · AKGEC</div>
         <div class="card-chips">
